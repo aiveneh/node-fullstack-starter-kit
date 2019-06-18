@@ -2,7 +2,6 @@
 
 import dotenv from 'dotenv';
 import http from 'http';
-import Socket from 'socket.io';
 import app from './app';
 import { MongoConnect } from './connection';
 import Log from './services/Logger';
@@ -48,12 +47,6 @@ function onListening() {
   const bind = typeof addr === 'string' ? `pipe ${addr}` : `port ${addr.port}`;
   Log.info(`Server Listening on  ${bind}`);
 }
-
-export const io = Socket(server);
-
-io.on('connection', () => {
-  Log.info('socket connection established');
-});
 
 server.listen(port);
 server.on('error', onError);

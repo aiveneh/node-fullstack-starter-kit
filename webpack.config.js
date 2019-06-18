@@ -15,7 +15,6 @@ module.exports = {
   context: path.resolve(__dirname, 'react'),
   entry: {
     app: './app.jsx',
-    admin: './admin.jsx',
   },
   optimization: {
     splitChunks: {

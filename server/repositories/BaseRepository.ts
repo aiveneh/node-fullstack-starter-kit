@@ -33,15 +33,15 @@ export abstract class BaseRepository<T> implements IWrite<T>, IRead<T> {
 
   }
 
-  public findAll(data: object): Promise<T[]> {
+  public find(filter = {}): Promise<T[]> {
 
-    return this.collection.find(data).toArray();
+    return this.collection.find(filter).toArray();
 
   }
 
-  public async findOne(data: object): Promise<T> {
+  public async findOne(filter = {}): Promise<T> {
 
-    return await this.collection.findOne(data);
+    return await this.collection.findOne(filter);
 
   }
 }

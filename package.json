@@ -2,9 +2,23 @@
   "name": "node-fullstack-starter",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./bin/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/server.js",
+    "server": "nodemon ./bin/server.js",
+    "build": "npm run webpack & npm run tsc",
+    "dev": "concurrently --kill-others \"npm run tsc-watch\" \"npm run server\" \"npm run webpack-watch\" ",
+    "tsc": "tsc",
+    "tsc-watch": "tsc --watch",
+    "test": "jest",
+    "test-watch": "jest --watch",
+    "test-coverage": "jest --coverage",
+    "lint": "tslint src/**",
+    "seed": "tsc && node ./bin/seeder.js",
+    "init-jest": "jest --init",
+    "webpack": "webpack",
+    "webpack-watch": "webpack --watch",
+    "pre-commit": "npm run build"
   },
   "author": "",
   "license": "ISC",
@@ -32,6 +46,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.4.0",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/preset-env": "^7.4.2",
     "@babel/preset-react": "^7.0.0",
     "@types/bcrypt": "^3.0.0",

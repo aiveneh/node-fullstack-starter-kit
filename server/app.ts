@@ -7,8 +7,6 @@ import session from 'express-session';
 import helmet from 'helmet';
 import path from 'path';
 import AuthRouter from './app/auth/AuthRouter';
-import ChatRouter from './app/chat/ChatRouter';
-import TransactionRouter from './app/transaction/TransactionRouter';
 import UserRouter from './app/user/UserRouter';
 import router from './router';
 
@@ -51,7 +49,7 @@ app.use(express.static(publicPath));
 
 // route categories
 app.use('/', router);
-app.use('/api/v1', [AuthRouter, ChatRouter, TransactionRouter, UserRouter]);
+app.use('/api/v1', [AuthRouter, UserRouter]);
 
 app.use((req: Request, res: Response, next: any) => {
   res.status(404).render('error404');
