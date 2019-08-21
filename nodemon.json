@@ -1,11 +1,12 @@
 {
-  "verbose": true,
+  "verbose": false,
   "ignore": [
     "*.test.js",
     "fixtures/*",
     "public",
     "react",
-    "src"
+    "server",
+    "logs"
   ],
   "execMap": {
     "handlebars": "handlebars",

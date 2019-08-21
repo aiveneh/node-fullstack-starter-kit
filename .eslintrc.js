@@ -18,5 +18,8 @@ module.exports = {
     'class-methods-use-this': 0,
     'label-has-for': 0,
     'label-has-associated-control': 0,
+    'jsx-a11y/label-has-associated-control': 0,
+    'jsx-a11y/label-has-for': 0,
+    'react/no-unescaped-entities': 0
   },
 };
