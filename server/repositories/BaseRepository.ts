@@ -20,7 +20,7 @@ export abstract class BaseRepository<T> implements IWrite<T>, IRead<T> {
 
     const itemWithDate = Object.assign(item, { createdAt: new Date() });
 
-    const result: InsertOneWriteOpResult = await this.collection.insertOne(itemWithDate);
+    const result = await this.collection.insertOne(itemWithDate);
 
     return result.ops[0];
   }

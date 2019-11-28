@@ -13,5 +13,5 @@
     "rb": "ruby",
     "pde": "processing --sketch={{pwd}} --run"
   },
-  "ext": "js, json, handlebars"
+  "ext": "js,ts, tsx, json, handlebars"
 }

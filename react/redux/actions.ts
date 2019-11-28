@@ -2,6 +2,11 @@ import { createAction } from 'redux-actions';
 
 // TODO properly docuemnt this class, very important
 export default class ActionState {
+  public namespace;
+  public loading;
+  public success;
+  public error;
+  public reset;
   /**
    * @param {*} namespace, action namespace
    * intialize the class with  a proper entitiy name
@@ -14,19 +19,19 @@ export default class ActionState {
     this.reset = `${this.namespace}/RESET`;
   }
 
-  loadingAction() {
+  public loadingAction() {
     return createAction(this.loading)();
   }
 
-  successAction(payload) {
+  public successAction(payload) {
     return createAction(this.success)(payload);
   }
 
-  errorAction(payload) {
+  public errorAction(payload) {
     return createAction(this.error)(payload);
   }
 
-  resetAction() {
+  public resetAction() {
     // dont call this create action, use this is needed as a fucntion
     return createAction(this.reset)();
   }

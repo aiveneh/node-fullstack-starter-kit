@@ -1,20 +1,26 @@
 import React, { Component } from 'react';
 
-export default class ErrorBoundary extends Component {
+interface IState {
+  hasError: any;
+  error: any;
+  info: any;
+}
+
+export default class ErrorBoundary extends Component<{}, IState> {
+
+  public static getDerivedStateFromError() {
+    return { hasError: true };
+  }
   constructor(props) {
     super(props);
     this.state = { hasError: false, error: '', info: '' };
   }
 
-  static getDerivedStateFromError() {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, info) {
+  public componentDidCatch(error, info) {
     this.setState({ error, info });
   }
 
-  render() {
+  public render() {
     const { hasError, error, info } = this.state;
     const { children } = this.props;
 
