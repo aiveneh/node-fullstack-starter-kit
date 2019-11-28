@@ -2,7 +2,7 @@ import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import express, { Request, Response } from 'express';
-import exphbs from 'express-handlebars';
+import hbs from 'hbs';
 import session from 'express-session';
 import helmet from 'helmet';
 import path from 'path';
@@ -43,13 +43,15 @@ app.get('*.js.gz', (req, res, next) => {
 app.set('view cache', true);
 app.set('views', viewsPath);
 app.set('view engine', 'handlebars');
-app.engine('handlebars', exphbs({ defaultLayout: 'dashboard' }));
+app.engine('handlebars', hbs.__express);
 
 app.use(express.static(publicPath));
 
 // route categories
-app.use('/', router);
 app.use('/api/v1', [AuthRouter, UserRouter]);
+// This must come after api because f the asteriks in router.js
+
+app.use('/', router);
 
 app.use((req: Request, res: Response, next: any) => {
   res.status(404).render('error404');
